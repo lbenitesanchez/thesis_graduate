@@ -1,0 +1,574 @@
+\documentclass[12pt]{report}
+
+\usepackage[a4paper,top=2.0cm, bottom=2.0cm, left=3cm, right=2.0cm,noheadfoot,footskip=1.0cm]{geometry}
+
+%\usepackage{layouts}
+%\usepackage{showframe}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% enviada a CNPQ em agosto 18. 2009
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Package used
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% aCENTOS
+%%%%
+\usepackage[latin1]{inputenc}
+\usepackage{natbib}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{setspace}
+
+\usepackage{mathptmx} %paquete para tipo de letras Times New Roman
+%
+\usepackage[centertags]{amsmath}
+\usepackage{latexsym,enumerate}
+\usepackage{amsmath,amsthm,amsopn,amstext,amscd,amsfonts,amssymb,epsfig}
+\usepackage{natbib}
+%\usepackage[dvips]{graphicx}
+\usepackage{niceframe}%acrescentar
+\usepackage{subfigure}%acrescentar
+\usepackage{color}
+\usepackage{url}
+\usepackage{rotating}
+\usepackage{here}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage{lscape} %package for landscape
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[subfigure]{tocloft}
+\usepackage{titlesec}
+\usepackage{calc}
+\usepackage{chngcntr}
+\usepackage{caption}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\spanishdecimal{.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% These are the various available environments
+% For Theorem 1, Lemma 1, Corollary 1, Proposition 1,...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{theorem}{\vspace{-0.35cm}\newline Teorema}
+\newtheorem{corollary}{\vspace{-0.35cm}\newline Corolario}
+\newtheorem{lemma}{\vspace{-0.35cm}\newline Lema}
+\newtheorem{definition}[theorem]{\vspace{-0.35cm}\newline Definición}
+\newtheorem{remark}{\vspace{-0.35cm}\newline Observación}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% These are the various available environments %
+% for other commands                           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\tetn}{{\mbox{\boldmath $\theta$}}}
+
+\def \sign {{\rm sign}}
+\def \pr {\mathbb{P}}
+\def \R {\mathbb{R}}
+\def \sech {\mbox{sech}}
+\def \cov  {\mbox{Cov}}
+\def \E    {\mathbb{E}}
+\def \V    {\mbox{Var}}
+\def \sech {\mbox{sech}}
+\def \build#1#2#3{\mathrel{\mathop{#1}\limits^{#2}_{#3}}}
+\def \Sum#1#2{\build{\sum}{#1}{#2}}
+\def \Prod#1#2{\build{\prod}{#1}{#2}}
+\def \Int#1#2{\build{\int}{\hspace{0.2cm}#1}{#2}}
+\def \Frac#1#2{\mbox{$\displaystyle\frac{#1}{#2}$}}
+\def \iid  {\stackrel{\mbox{\footnotesize iid}}{\sim}}
+\def \id   {\stackrel{d}{=}}
+\def \sima {\dot{\sim}}
+\def \half {$\frac{1}{2}$}
+\def \findemo {\hfill \, \rule{1ex}{1ex}\,}
+\def  \p {\partial}
+\def  \ul {\underline}
+\def  \ol {\overline}
+\def \n {\vspace{0.25cm} \noindent}
+\newcommand{\by}{{\bf y}}
+\newcommand{\bT}{{\bf t}}
+\newcommand {\boldgreektext}[1] {\boldmath \(#1\)\unboldmath}
+\newcommand {\bg}[1] {\mbox{\boldgreektext{#1}}}
+\newcommand{\vg}[1]{\mbox{\boldmath\(#1\)\unboldmath}}      % Bold (mathematic mode)
+\newcommand{\el}{\ell}
+\newcommand{\sumas}{\sum^n_{i=1}}
+\newcommand{\ind}{\stackrel {{\rm ind}}{\sim}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short and full names for some commonly referenced journals
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%A%
+\newcommand{\AMS}{\emph{Ann. Math. Stat.}}
+\newcommand{\AISM}{\emph{Ann. Inst. Stat. Math. }}
+%B%
+\newcommand{\BIS}{\emph{Biometrics}}
+\newcommand{\BIB}{\emph{Biometrics Bull.}}
+\newcommand{\BIJ}{\emph{Biometrical J.}}
+\newcommand{\BIK}{\emph{Biometrika}}
+\newcommand{\BJPS}{\emph{Braz. J. Prob. Stat.}}
+%C%
+\newcommand{\CJS}{\emph{Can. J. Stat.}}
+\newcommand{\CJFAS}{\emph{Can. J. Fish. Aquat. Sci.}}
+\newcommand{\CMA}{\emph{Comp. Math. Appl. }}
+\newcommand{\CSTM}{{\emph{Comm. Stat. Theor. Meth. }}}
+\newcommand{\CSSC}{{\emph{Comm. Stat. Simul. Comp. }}}
+\newcommand{\CSDA}{{\emph{Comp. Stat. Data Anal. }}}
+\newcommand{\CIE}{\emph{Comp. Ind. Engin.}}
+%D%
+%E%
+\newcommand{\ECC}{{Econometrica}}
+\newcommand{\EQC}{\emph{Econ. Qual. Cont.}}
+\newcommand{\EFM}{\emph{Engin. Frac. Mech.}}
+%F%
+%G%
+%H%
+%I%
+\newcommand{\ITR}{\emph{IEEE Trans. Rel.}}
+%J%
+\newcommand{\JASA}{{\emph{J. Amer. Stat. Soc. } }}
+\newcommand{\JAE}{\emph{J. Appl. Econ.}}
+\newcommand{\JAP}{\emph{J. Appl. Prob.}}
+\newcommand{\JASS}{\emph{J.  Appl. Stat. Sc.}}
+\newcommand{\JAS}{\emph{J. Appl. Stat. }}
+\newcommand{\JAM}{\emph{J. Appl. Mech.}}
+\newcommand{\JIMA}{\emph{J. Inst. Math. Appl.}}
+\newcommand{\JISA}{\emph{J. Indian Stat. Assoc.}}
+\newcommand{\JMA}{\emph{J. Multivar. Anal.}}
+\newcommand{\JMS}{\emph{J. Math. Sc.}}
+\newcommand{\JNBS}{\emph{J. of Nat. Bureau Stand.}}
+\newcommand{\JRSSA}{\emph{J. R. Stat. Soc. A}}
+\newcommand{\JRSSB}{\emph{J. R. Stat. Soc. B}}
+\newcommand{\JRSSC}{\emph{J. R. Stat. Soc. C}}
+\newcommand{\JRSSD}{\emph{J. R. Stat. Soc. D}}
+\newcommand{\JSCS}{\emph{J. Stat. Comp. Simul.}}
+\newcommand{\JSPI}{\emph{J. Stat. Plan. Infer.}}
+\newcommand{\JSR}{\emph{J. Stat. Res.}}
+\newcommand{\JTSA}{\emph{J. Time Series Anal.}}
+\newcommand{\JCGS}{\emph{J.  Comp. Graph. Stat.}}
+%K%
+%L%
+\newcommand{\LDA}{\emph{Lifetime Data Anal.}}
+%M%
+\newcommand{\MIR}{\emph{Microel. Rel.}}
+%N%
+\newcommand{\NRL}{\emph{Naval Res. Log.}}
+%O%
+\newcommand{\OPR}{\emph{Operat. Res.}}
+\newcommand{\ORQ}{\emph{Operat. Res. Quart.}}
+%P%
+%Q%
+\newcommand{\QUS}{\emph{Queueing Systems}}
+%R%
+\newcommand{\RISI}{\emph{Rev. Int. Stat. Inst.}}
+\newcommand{\RSA}{\emph{Rev. Stat. Appl.}}
+\newcommand{\RIA}{\emph{Risk Anal.}}
+%S%
+\newcommand{\SAN}{\emph{Sankhy\=a}}
+\newcommand{\SJAM}{\emph{SIAM J. Appl. Math.}}
+\newcommand{\SJS}{\emph{Scand. J. Stat.}}
+\newcommand{\STN}{\emph{Stat. Neerl.}}
+\newcommand{\SPA}{\emph{Stoch. Proc. Appl.}}
+\newcommand{\SPL}{\emph{Stat. Prob. Letters}}
+\newcommand{\STR}{\emph{Stat. Rev.}}
+\newcommand{\STP}{\emph{Stat. Papers}}
+\newcommand{\STS}{\emph{Stat. Sc.}}
+%T%
+\newcommand{\TAS}{\emph{Amer. Stat.}}
+\newcommand{\TEC}{\emph{Technometrics}}%
+\newcommand{\TPA}{\emph{Theory Prob. Appl.}}
+\newcommand{\THS}{\emph{Statistician}}%
+%U%
+%V%
+%W%
+%X%
+%Y%
+%Z%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Size of body text
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\setlength{\topmargin}{-1cm}       %Defines the superior margen
+%\setlength{\oddsidemargin}{0cm}   %Defines the left margen of the odd pages
+%\setlength{\evensidemargin}{0cm}  %Defines the left margen of the even pages
+%\setlength{\textwidth}{160mm}     %Defines the text width
+%\setlength{\textheight}{220mm}    %Defines the text height
+%\def\baselinestretch{1.5}           %Defines the space between lines (1.5 is space double and 1 es simple space)
+%\setlength{\footskip}{1cm}        %Defines the space between the last line and the page number
+%\setlength{\parindent}{0.5cm}     %Defines indent
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Make that joint the graphics can be inserted all text possible
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\topfraction}{.9}
+\renewcommand{\textfraction}{.1}
+\renewcommand{\floatpagefraction}{.9}
+%.................................
+\newcommand{\balpha}{\mbox{${ \bm \alpha}$}}
+\newcommand{\bmu}{\mbox{${ \bm \mu}$}}
+\newcommand{\bphi}{\mbox{${ \bm \phi}$}}
+\newcommand{\bPhi}{\mbox{${ \bm \Phi}$}}
+\newcommand{\bnu}{\mbox{${\bm \nu}$}}
+\newcommand{\bSigma}{\mbox{ ${ \bm \Sigma}$}}
+\newcommand{\bepsilon}{\mbox{${ \bm \epsilon}$}}
+\newcommand{\bLambda}{\mbox{${ \bm \Lambda}$}}
+\newcommand{\bbeta}{\mbox{${\bm \beta}$}}
+\newcommand{\btheta}{\mbox{${ \bm \theta}$}}
+\newcommand{\bTheta}{\mbox{${ \bm \Theta}$}}
+\newcommand{\bxi}{\mbox{${ \bm \xi}$}}
+\newcommand{\bvarphi}{\mbox{${ \bm \varphi}$}}
+\newcommand{\bnabla}{\mbox{${ \bm \nabla}$}}
+\newcommand{\bDelta}{\mbox{${ \bm \Delta}$}}
+\newcommand{\ii}{i=1,\ldots,n}
+\newcommand{\is}{i=1,\ldots,n}
+\newcommand{\jj}{j=1,\ldots,G}
+\newcommand{\yp}{\mathbf{y}}
+\newcommand{\bGamma}{\mbox{\boldmath $\Gamma$}}
+\newcommand{\bdelta}{\mbox{${ \bm \delta}$}}
+\newcommand{\bPsi}{\mbox{${ \bm \Psi}$}}
+\newcommand{\bpsi}{\mbox{${ \bm \psi}$}}
+\newcommand{\btau}{\mbox{${ \bm \tau}$}}
+\newcommand{\sumasj}{\sum_{j=1}^G}
+\newcommand{\be}{\mathbf{b}}
+\newcommand{\bpi}{\mbox{${ \bm \pi}$}}
+\newcommand{\blambda}{\mbox{${ \bm \lambda}$}}
+\newcommand{\bOmega}{\mbox{${ \bm \Omega}$}}
+\newcommand{\bomega}{\mbox{${ \bm \omega}$}}
+\newcommand{\bUpsilon}{\mbox{ ${ \bm \Upsilon}$}}
+\newcommand{\bgamma}{\mbox{${ \bm \gamma}$}}
+\newcommand{\neta}{\mbox{${ \bm \eta}$}}
+\newcommand{\bXi}{\mbox{${ \bm \Xi}$}}
+\newcommand{\bzeta}{\mbox{${\bm \zeta}$}}
+%\newcommand{\y}{\mathbf{Y}}
+
+
+
+\newcommand{\D}{\textrm{D}^{-1}(\bphi)}
+\newcommand{\z}{\mathbf{Z}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\zp}{\mathbf{z}}
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\ap}{\mathbf{a}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\up}{\mathbf{u}}
+\newcommand{\U}{\mathbf{U}}
+\newcommand{\s}{\mathbf{s}}
+\newcommand{\B}{\mathbf{B}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\bt}{\mathbf{t}}
+\newcommand{\bh}{\mathbf{h}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\Bibliografia}{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\y}{y }
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thesubtable}{\arabic{subtable}}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\renewcommand{\theequation}{\arabic{equation}}
+\renewcommand{\thechapter}{\Roman{chapter}.}
+
+  \newcommand{\listappendicesname}{INDICE DE ANEXOS}
+  \newlistof{appendices}{apc}{\listappendicesname}
+  \refstepcounter{appendices}%
+  \newcommand{\appendices}[1]{\addcontentsline{apc}{appendices}{Anexo N$^{\circ}$\numberline{\theappendices}\hspace{-0.1in}:\hspace{0.1in}#1}\addtocounter{appendices}{1} }
+  \newcommand{\newappendix}[1]{\section*{Anexo \theappendices:  #1}\appendices{#1}}
+  \renewcommand{\cftapctitlefont}{\hfill\bfseries\fontsize{14pt}{14pt}\selectfont}
+  \renewcommand\cftafterapctitle{\hfill\mbox{}}
+  \parindent0mm
+%.....................
+% Redefinition of chapter and section
+\titleformat
+{\chapter} % command
+[block] % shape
+{\bfseries\fontsize{14pt}{14pt}\selectfont} % format
+{\thechapter} % label
+{0.2ex} % sep
+{
+  \vspace*{1.4cm}
+  \centering
+} % before-code
+[\vspace*{-2.2cm}] % after-code
+
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+
+\titleformat{\section}[block]
+{\bfseries\fontsize{14pt}{14pt}\selectfont}
+{\thesection.}{0.5em}{}
+%%%
+
+
+% Redefinition of ToC command to get centered heading
+\cftsetindents{chapter}{1em}{2.5em}
+\cftsetindents{section}{1em}{2em}
+\cftsetindents{subsection}{3em}{3em}
+\renewcommand\cfttoctitlefont{\hfill\bfseries\fontsize{14pt}{14pt}\selectfont}
+\renewcommand\cftaftertoctitle{\hfill\mbox{}}
+\addto\captionsspanish{\renewcommand{\contentsname}{ÍNDICE}}
+
+% Redefinition of List of Tables command to get centered heading
+\counterwithout{table}{chapter}
+\renewcommand\cftlottitlefont{\hfill\bfseries\fontsize{14pt}{14pt}\selectfont}
+\renewcommand\cftafterlottitle{\hfill\mbox{}}
+\renewcommand{\cfttabpresnum}{Cuadro N$^{\circ}$}
+\renewcommand{\cfttabnumwidth}{0.9in}
+\renewcommand{\cfttabaftersnum}{: }
+\addto\captionsspanish{\renewcommand{\listtablename}{ÍNDICE DE CUADROS}}
+
+% Redefinition of List of Figures command to get centered heading
+\counterwithout{figure}{chapter}
+\renewcommand\cftloftitlefont{\hfill\bfseries\fontsize{14pt}{14pt}\selectfont}
+\renewcommand\cftafterloftitle{\hfill\mbox{}}
+\renewcommand{\cftfigpresnum}{Figura N$^{\circ}$}
+\renewcommand{\cftfignumwidth}{0.9in}
+\renewcommand{\cftfigaftersnum}{: }
+\addto\captionsspanish{\renewcommand{\listfigurename}{ÍNDICE DE FIGURAS}}
+
+
+\counterwithout{table}{chapter}
+\renewcommand\spanishtablename{Cuadro}
+\captionsetup[table]{labelfont=bf,textfont=bf}
+
+\newenvironment{dedication} {\cleardoublepage
+  \thispagestyle{empty}
+  \vspace*{\stretch{3}} \begin{center} \em} {\end{center}
+  \vspace*{\stretch{1}} \clearpage}
+
+% FIXME Substituir 'Nome completo do aluno' pelo seu nome.
+\newcommand{\autor}{
+  % \rule[1pt]{9cm}{.5pt} \\
+  \begingroup
+  \fontsize{14pt}{14pt}\selectfont
+  {NOMBRE DEL TESISTA}
+  \endgroup
+}
+
+% FIXME Substituir 'Título da defesa' pelo título da defesa.
+\newcommand{\titulo}{ \begingroup
+  \fontsize{14pt}{14pt}\selectfont
+  TITULO DE LA TESIS
+  \endgroup}
+% FIXME Se estiver no programa de mestrado, descomente a linha a seguir.
+% \def\mestrado{}
+% FIXME Deixe descomente apenas a linha referente ao departamento.
+% \def\matematica{}
+%\def\aplicada{}
+\def\estatistica{}
+
+% FIXME Substituir 'Nome completo do orientador' pelo nome completo do seu
+% orientador.
+\newcommand{\orientador}{
+  %   \rule[1pt]{9cm}{.5pt} \\
+  \begingroup
+  \fontsize{14pt}{14pt}\selectfont
+  {NOMBRE DEL(A) ASESOR(A)}
+  \endgroup
+}
+% FIXME Se for orientado por uma mulher, descomente a linha a seguir.
+% \def\femaleOrientador{}
+
+% FIXME Substituir 'Nome completo do coorientador' pelo nome completo do seu
+% coorientador. Caso não tenha coorientador, comente a linha a seguir.
+\newcommand{\coorientador}{Nome completo do coorientador}
+% FIXME Se for coorientado por uma mulher, descomente a linha a seguir.
+% \def\femaleCoorientador{}
+
+% FIXME Substituir 'Ano' pelo ano em que ocorreu sua defesa.
+\newcommand{\ano}{2017}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Hyphenation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Title and authors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\baselinestretch}{1.5} 
+\begin{document}
+  \thispagestyle{plain}
+  \pagenumbering{gobble}
+  % WARNING Não modifique este arquivo.
+  %\fbox{\parbox[b]{\linewidth}{ 
+  \begin{center}
+    
+    \begingroup
+    \fontsize{18pt}{18pt}\selectfont
+    \textbf{UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS}
+    \endgroup
+    \vspace{-0.5cm}
+    
+    \begingroup
+    \fontsize{16pt}{16pt}\selectfont
+    {FACULTAD DE CIENCIAS MATEMÁTICAS}\\
+    {E.A.P. DE ESTADÍSTICA}
+    \endgroup
+    
+    \vspace{.9cm}
+  \end{center}
+  \vspace{-.3cm}
+  \begin{center}
+  \includegraphics[width=1.50in, height=1.56in,keepaspectratio=true]{./figuras/unmsm-logo}  
+  \end{center}
+    \vspace{.7cm}
+  
+  \begin{center}
+    {\Large\textbf{\textsc{\titulo}}}
+  \end{center}
+  \vspace{1.2cm}
+  
+  \begin{center}
+    { \large {TESIS} } \vspace{.3cm} \\
+    { \large {Para optar el Título Profesional de Licenciado en Estadística} }  
+  \end{center}
+  \vspace{0.7cm}
+  
+  \begin{center}
+    { \large {AUTOR} } \vspace{.3cm} \\
+    {\large{{\autor}}}
+  \end{center}
+  \vspace{.7cm}
+  
+  \begin{center}
+  { \large {ASESOR} } \vspace{.3cm} \\
+    {\large{{\orientador}}}
+  \end{center}
+  
+  \vspace{.5cm}
+  \vspace{.5cm}
+  \noindent
+  \vspace{1cm}
+  \begin{center}
+    {\small{{Lima - Perú \\  \ano}}}
+  \end{center}
+
+\newpage
+\chapter*{FICHA CATALOGRÁFICA}
+NOMBRE DEL TESISTA\\
+TITULO DE LA TESIS.\\
+(Lima, 2017).\\
+Xxx, 80p.xxxx, UNMSM, Licenciado, Estadística, 2017.\\
+Tesis Universidad Nacional Mayor de San Marcos\\
+Facultad de Ciencias Matemáticas 1. Estadística\\
+I. UNMSM. TEMA DE LA TESIS.
+\newpage
+ %\fontsize{12pt}{12pt}\selectfont  
+  \begin{dedication}
+    \hfill \
+    \parbox{10cm}{
+      \begin{verse}
+        El presente trabajo se lo dedico a \\
+        Jesús, mi Señor y Redentor por \\
+        ser mi fortaleza, roca mía y \\
+        torre fuerte.
+      \end{verse}
+    }
+    
+  \end{dedication}
+  \newpage
+    \chapter*{AGRADECIMIENTOS}
+    \begin{itemize}
+      \item A Dios por su presencia constante en mi vida, por confortarme y ayudarme a enfrentar todos los momentos difíciles.
+    \newpage
+\chapter*{RESUMEN}
+\addcontentsline{toc}{chapter}{RESUMEN}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\\
+
+\textbf{Palabras clave:} key 1, key 2 key 3.
+\newpage
+
+\chapter*{ABSTRACT}
+\addcontentsline{toc}{chapter}{ABSTRACT}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\\
+
+\textbf{Keywords:} key 1, key 2 key 3.
+\newpage
+  \tableofcontents
+    \newpage
+  \listoftables
+    \newpage
+  \listoffigures
+  \newpage
+  \listofappendices
+  \newpage
+
+
+\pagenumbering{arabic}
+\chapter{INTRODUCCIÓN}
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur
+
+
+\section{Justificación de la investigación}
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.  
+\begin{enumerate}
+  \item Sed ut perspiciatis unde omnis iste natus error sit voluptatem.
+  \item Sed ut perspiciatis unde omnis iste natus error sit voluptatem. 
+\end{enumerate}
+\section{Objetivos de la investigación}
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+\begin{enumerate}
+  \item[1.] Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+  \item[2.] Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+\end{enumerate}
+
+\newpage
+\chapter{Capítulo 2}
+\section{Sección}
+architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur
+\subsection{Subsección}
+
+\newpage 
+\chapter{Capítulo 3}
+\section{Sección}
+ 
+\newpage
+\chapter{Capítulo 4}
+
+\newpage
+\chapter{Capítulo 5}
+architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam 
+
+  
+ 
+ 
+\newpage
+\chapter{CONCLUSIONES}
+
+architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam 
+
+
+\newpage
+\chapter{RECOMENDACIONES}
+
+architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam 
+
+\newpage
+
+\chapter{REFERENCIAS BIBLIOGRÁFICAS}
+\renewcommand{\bibsection}{}
+\bibliographystyle{natbib}
+\bibliography{biblioRM}
+
+\newpage
+\chapter{ANEXOS}
+\newappendix{El paquete en R}
+ 
+\end{document}
+
